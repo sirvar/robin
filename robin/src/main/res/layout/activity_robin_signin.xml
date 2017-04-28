@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.sirvar.robin.LoginActivity">
+    tools:context="com.sirvar.robin.SigninActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:focusableInTouchMode="true">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textSize="22sp"
+            android:textColor="#3a3a3a"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
@@ -29,22 +29,23 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_below="@+id/title"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_centerHorizontal="true" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/wrapper_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="#3a3a3a"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_below="@+id/logo">
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:textColor="#3a3a3a"
                 android:hint="@string/email_hint"
+                android:textSize="15sp"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
@@ -52,15 +53,17 @@
             android:id="@+id/wrapper_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textColorHint="#3a3a3a"
+            android:layout_marginTop="4dp"
             android:layout_below="@+id/wrapper_email">
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:textColor="#3a3a3a"
                 android:hint="@string/password_hint"
+                android:textSize="15sp"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -71,8 +74,21 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_below="@+id/wrapper_password"
             android:textColor="@android:color/white"
+            android:textSize="16sp"
             android:background="@drawable/button"
-            android:text="@string/login" />
+            android:text="@string/signin" />
+        
+        <TextView
+            android:id="@+id/signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/submit"
+            android:textSize="15sp"
+            android:textAllCaps="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:text="@string/signup_link"/>
 
     </RelativeLayout>
 

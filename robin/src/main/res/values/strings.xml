@@ -2,5 +2,6 @@
     <string name="app_name">Robin</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
-    <string name="login">Login</string>
+    <string name="signin">Sign In</string>
+    <string name="signup_link">Don\'t have an account? Sign up</string>
 </resources>

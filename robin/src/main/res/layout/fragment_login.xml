@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sirvar.robin.SigninActivity">
+    tools:context="com.sirvar.robin.LoginFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:focusableInTouchMode="true">
 
@@ -36,6 +34,8 @@
             android:id="@+id/wrapper_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:textColorHint="#3a3a3a"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_below="@+id/logo">
@@ -49,35 +49,56 @@
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/wrapper_password"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#3a3a3a"
-            android:layout_marginTop="4dp"
+            android:layout_height="match_parent"
+            android:id="@+id/password_layout"
             android:layout_below="@+id/wrapper_email">
-
-            <EditText
-                android:id="@+id/password"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/wrapper_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#3a3a3a"
-                android:hint="@string/password_hint"
-                android:textSize="15sp"
-                android:inputType="textPassword" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:textColorHint="#3a3a3a"
+                android:layout_marginTop="4dp">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#3a3a3a"
+                    android:hint="@string/password_hint"
+                    android:textSize="15sp"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/forgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/wrapper_password"
+                android:layout_alignBottom="@+id/wrapper_password"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/forgot_password" />
+        </RelativeLayout>
 
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_height="70dp"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_below="@+id/wrapper_password"
+            android:layout_below="@+id/password_layout"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:background="@drawable/button"
             android:text="@string/signin" />
-        
+
         <TextView
             android:id="@+id/signup"
             android:layout_width="match_parent"

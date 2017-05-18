@@ -33,8 +33,8 @@ public class MainActivity extends RobinActivity {
 ```
 
 ## Themes
-| Theme Name  | Usage        |
-| ----------- | ------------:|
+| Theme Name | Usage |
+| ---------- | -----:|
 | Light |  Theme.LIGHT |
 | Dark | Theme.DARK |
 | Flat | Theme.FLAT |

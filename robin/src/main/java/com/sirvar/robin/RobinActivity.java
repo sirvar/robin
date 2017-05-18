@@ -3,16 +3,8 @@ package com.sirvar.robin;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
 public abstract class RobinActivity extends AppCompatActivity {
 
@@ -36,12 +28,7 @@ public abstract class RobinActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         if (findViewById(R.id.fragment_container) != null) {
-            loginFragment = new LoginFragment();
-
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, loginFragment)
-                    .commit();
+            startLoginFragment();
 
         }
 
@@ -51,13 +38,44 @@ public abstract class RobinActivity extends AppCompatActivity {
     /**
      * Override form login
      *
-     * @param email username or email address entered by user
+     * @param email    username or email address entered by user
      * @param password raw password
      */
     protected abstract void onLogin(String email, String password);
 
     /**
+     * Override form login
+     *
+     * @param email    username or email address entered by user
+     */
+    protected abstract void onForgotPassword(String email);
+
+    protected void startLoginFragment() {
+        loginFragment = new LoginFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, loginFragment)
+                .commit();
+    }
+
+    protected void startForgotPasswordFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, loginFragment)
+                .commit();
+    }
+
+    protected void startSignupFragment() {
+        signupFragment = new SignupFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, signupFragment)
+                .commit();
+    }
+
+    /**
      * Set title for login fragment
+     *
      * @param title login title
      */
     protected void setLoginTitle(String title) {
@@ -67,6 +85,7 @@ public abstract class RobinActivity extends AppCompatActivity {
 
     /**
      * Set theme for activity
+     *
      * @param theme Light or Dark theme
      */
     protected void setTheme(Theme theme) {
@@ -75,6 +94,7 @@ public abstract class RobinActivity extends AppCompatActivity {
 
     /**
      * Set drawable image for logo
+     *
      * @param drawable drawable logo
      */
     protected void setImage(Drawable drawable) {
@@ -84,6 +104,7 @@ public abstract class RobinActivity extends AppCompatActivity {
 
     /**
      * Set bitmap image for logo
+     *
      * @param bitmap bitmap logo
      */
     protected void setImage(Bitmap bitmap) {
@@ -93,6 +114,7 @@ public abstract class RobinActivity extends AppCompatActivity {
 
     /**
      * Use custom font for all Views
+     *
      * @param typeface custom typeface
      */
     protected void setFont(Typeface typeface) {

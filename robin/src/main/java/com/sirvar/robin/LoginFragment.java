@@ -39,8 +39,7 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
@@ -67,6 +66,20 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((RobinActivity) getActivity()).startForgotPasswordFragment();
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((RobinActivity) getActivity()).startSignupFragment();
+            }
+        });
+
         setDefaults();
 
         return view;
@@ -74,6 +87,7 @@ public class LoginFragment extends Fragment {
 
     /**
      * Get title for fragment
+     *
      * @param titleText fragment title
      */
     protected void setTitle(String titleText) {
@@ -89,6 +103,7 @@ public class LoginFragment extends Fragment {
 
     /**
      * Get drawable image for logo
+     *
      * @param drawable drawable logo
      */
     protected void setImage(Drawable drawable) {
@@ -97,6 +112,7 @@ public class LoginFragment extends Fragment {
 
     /**
      * Set bitmap image for logo
+     *
      * @param bitmap bitmap logo
      */
     protected void setImage(Bitmap bitmap) {
@@ -116,6 +132,7 @@ public class LoginFragment extends Fragment {
 
     /**
      * Get custom font for all Views
+     *
      * @param typeface custom typeface
      */
     protected void setFont(Typeface typeface) {

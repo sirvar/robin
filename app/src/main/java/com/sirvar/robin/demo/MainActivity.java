@@ -2,6 +2,7 @@ package com.sirvar.robin.demo;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.sirvar.robin.RobinActivity;
 import com.sirvar.robin.Theme;
@@ -21,5 +22,10 @@ public class MainActivity extends RobinActivity {
     @Override
     protected void onLogin(String email, String password) {
         // Make request to API
+    }
+
+    @Override
+    protected void onForgotPassword(String email) {
+        Toast.makeText(getApplicationContext(), "Forgot Password", Toast.LENGTH_SHORT).show();
     }
 }

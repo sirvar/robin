@@ -10,6 +10,7 @@ public abstract class RobinActivity extends AppCompatActivity {
 
     private LoginFragment loginFragment;
     private SignupFragment signupFragment;
+    private ForgotPasswordFragment forgotPasswordFragment;
 
     private String loginTitle;
     private String signupTitle;
@@ -29,7 +30,6 @@ public abstract class RobinActivity extends AppCompatActivity {
 
         if (findViewById(R.id.fragment_container) != null) {
             startLoginFragment();
-
         }
 
         setDefaults();
@@ -59,9 +59,10 @@ public abstract class RobinActivity extends AppCompatActivity {
     }
 
     protected void startForgotPasswordFragment() {
+        forgotPasswordFragment = new ForgotPasswordFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, loginFragment)
+                .replace(R.id.fragment_container, forgotPasswordFragment)
                 .commit();
     }
 

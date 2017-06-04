@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class LoginFragment extends Fragment {
 
-    public TextView title;
+    private TextView title;
     private TextView signup;
     private TextView forgotPassword;
     private ImageView logo;
@@ -32,7 +32,6 @@ public class LoginFragment extends Fragment {
     private String titleText;
     private Drawable logoDrawable;
     private Bitmap logoBitmap;
-
 
     public LoginFragment() {
         // Required empty public constructor

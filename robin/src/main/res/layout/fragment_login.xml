@@ -99,11 +99,39 @@
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
+        <LinearLayout
+            android:id="@+id/social_buttons"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_below="@id/submit"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin">
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:id="@+id/google_login"
+                android:scaleType="fitCenter"
+                android:layout_weight=".5"
+                android:padding="0dp"
+                android:background="@null"
+                android:src="@drawable/google_light"/>
+
+            <ImageButton
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:id="@+id/facebook_login"
+                android:scaleType="fitCenter"
+                android:layout_weight=".5"
+                android:padding="0dp"
+                android:background="@null"
+                android:src="@drawable/facebook"/>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/submit"
+            android:layout_below="@+id/social_buttons"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:gravity="center"

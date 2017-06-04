@@ -14,7 +14,7 @@ public class MainActivity extends RobinActivity {
         super.onCreate(savedInstanceState);
 
         setLoginTitle("Sign in to Robin");
-        setImage(getResources().getDrawable(R.mipmap.ic_launcher));
+        setImage(getResources().getDrawable(R.drawable.logo));
         setFont(Typeface.createFromAsset(getAssets(), "Montserrat-Medium.ttf"));
         setTheme(Theme.LIGHT);
     }

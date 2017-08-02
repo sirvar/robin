@@ -3,6 +3,7 @@ package com.sirvar.robin;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,9 @@ public class LoginFragment extends Fragment {
     private TextInputLayout emailWrapper;
     private TextInputLayout passwordWrapper;
     private Button submit;
+
+    private ImageButton google;
+    private ImageButton facebook;
 
     private Typeface typeface;
     private String titleText;
@@ -52,6 +57,8 @@ public class LoginFragment extends Fragment {
         emailWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_email);
         passwordWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_password);
         submit = (Button) view.findViewById(R.id.submit);
+        google = (ImageButton) view.findViewById(R.id.google_login);
+        facebook = (ImageButton) view.findViewById(R.id.facebook_login);
 
         // Login form submitted
         submit.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +69,20 @@ public class LoginFragment extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "Some information is missing.", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((RobinActivity) getActivity()).onGoogleLogin();
+            }
+        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((RobinActivity) getActivity()).onFacebookLogin();
             }
         });
 
@@ -89,14 +110,14 @@ public class LoginFragment extends Fragment {
      *
      * @param titleText fragment title
      */
-    protected void setTitle(String titleText) {
+    public void setTitle(String titleText) {
         this.titleText = titleText;
     }
 
     /**
      * Set title for fragment
      */
-    protected void setTitle() {
+    private void setTitle() {
         title.setText(titleText);
     }
 
@@ -105,7 +126,7 @@ public class LoginFragment extends Fragment {
      *
      * @param drawable drawable logo
      */
-    protected void setImage(Drawable drawable) {
+    public void setImage(Drawable drawable) {
         logoDrawable = drawable;
     }
 
@@ -114,14 +135,14 @@ public class LoginFragment extends Fragment {
      *
      * @param bitmap bitmap logo
      */
-    protected void setImage(Bitmap bitmap) {
+    public void setImage(Bitmap bitmap) {
         logoBitmap = bitmap;
     }
 
     /**
      * Set image for logo
      */
-    protected void setImage() {
+    private void setImage() {
         if (logoDrawable != null) {
             logo.setImageDrawable(logoDrawable);
         } else if (logoBitmap != null) {
@@ -134,14 +155,14 @@ public class LoginFragment extends Fragment {
      *
      * @param typeface custom typeface
      */
-    protected void setFont(Typeface typeface) {
+    public void setFont(Typeface typeface) {
         this.typeface = typeface;
     }
 
     /**
      * Set custom font for all Views
      */
-    protected void setFont() {
+    private void setFont() {
         title.setTypeface(typeface);
         signup.setTypeface(typeface);
         forgotPassword.setTypeface(typeface);

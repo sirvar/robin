@@ -3,8 +3,11 @@ package com.sirvar.robin;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public abstract class RobinActivity extends AppCompatActivity {
 
@@ -18,6 +21,9 @@ public abstract class RobinActivity extends AppCompatActivity {
     private Bitmap logoBitmap;
     private Typeface typeface;
 
+    private boolean loginFirst = true;
+    private boolean socialLogin = true;
+
     private Theme theme;
 
     @Override
@@ -27,6 +33,10 @@ public abstract class RobinActivity extends AppCompatActivity {
 
         // Don't show toolbar
         getSupportActionBar().hide();
+
+        loginFragment = new LoginFragment();
+        signupFragment = new SignupFragment();
+        forgotPasswordFragment = new ForgotPasswordFragment();
 
         if (findViewById(R.id.fragment_container) != null) {
             startLoginFragment();
@@ -44,14 +54,39 @@ public abstract class RobinActivity extends AppCompatActivity {
     protected abstract void onLogin(String email, String password);
 
     /**
-     * Override form login
+     * Override form signup
+     *
+     * @param email    username or email address entered by user
+     * @param password raw password
+     */
+    protected abstract void onSignup(String name, String email, String password);
+
+    /**
+     * Override form forgot password
      *
      * @param email    username or email address entered by user
      */
     protected abstract void onForgotPassword(String email);
 
+    /**
+     * Override form Google login
+     */
+    protected abstract void onGoogleLogin();
+
+    /**
+     * Override form Facebook login
+     */
+    protected abstract void onFacebookLogin();
+
+    public void enableSocialLogin() {
+        socialLogin = true;
+    }
+
+    public void disableSocialLogin() {
+        socialLogin = false;
+    }
+
     protected void startLoginFragment() {
-        loginFragment = new LoginFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, loginFragment)
@@ -59,7 +94,6 @@ public abstract class RobinActivity extends AppCompatActivity {
     }
 
     protected void startForgotPasswordFragment() {
-        forgotPasswordFragment = new ForgotPasswordFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, forgotPasswordFragment)
@@ -67,7 +101,6 @@ public abstract class RobinActivity extends AppCompatActivity {
     }
 
     protected void startSignupFragment() {
-        signupFragment = new SignupFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, signupFragment)
@@ -82,6 +115,16 @@ public abstract class RobinActivity extends AppCompatActivity {
     protected void setLoginTitle(String title) {
         loginTitle = title;
         loginFragment.setTitle(loginTitle);
+    }
+
+    /**
+     * Set title for login fragment
+     *
+     * @param title login title
+     */
+    protected void setSignupTitle(String title) {
+        signupTitle = title;
+        signupFragment.setTitle(signupTitle);
     }
 
     /**
@@ -101,6 +144,7 @@ public abstract class RobinActivity extends AppCompatActivity {
     protected void setImage(Drawable drawable) {
         logoDrawable = drawable;
         loginFragment.setImage(logoDrawable);
+        signupFragment.setImage(logoDrawable);
     }
 
     /**
@@ -111,6 +155,7 @@ public abstract class RobinActivity extends AppCompatActivity {
     protected void setImage(Bitmap bitmap) {
         logoBitmap = bitmap;
         loginFragment.setImage(logoBitmap);
+        signupFragment.setImage(logoBitmap);
     }
 
     /**
@@ -121,14 +166,7 @@ public abstract class RobinActivity extends AppCompatActivity {
     protected void setFont(Typeface typeface) {
         this.typeface = typeface;
         loginFragment.setFont(typeface);
-    }
-
-    protected void configureLogin() {
-        if (logoDrawable != null) {
-            loginFragment.setImage(logoDrawable);
-        } else if (logoBitmap != null) {
-            loginFragment.setImage(logoBitmap);
-        }
+        signupFragment.setFont(typeface);
     }
 
     /**

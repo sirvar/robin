@@ -80,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:clickable="true"
+                android:background="#fff"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginEnd="36dp"
                 android:layout_marginRight="36dp"
@@ -97,33 +98,34 @@
             android:background="@drawable/button"
             android:text="@string/signin"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <LinearLayout
             android:id="@+id/social_buttons"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_below="@id/submit"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin">
             <ImageButton
                 android:layout_width="150dp"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:id="@+id/google_login"
                 android:scaleType="fitCenter"
                 android:layout_weight=".5"
                 android:padding="0dp"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/google_light"/>
 
             <ImageButton
                 android:layout_width="150dp"
-                android:layout_height="60dp"
+                android:layout_height="48dp"
                 android:id="@+id/facebook_login"
                 android:scaleType="fitCenter"
                 android:layout_weight=".5"
                 android:padding="0dp"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/facebook"/>
         </LinearLayout>
 

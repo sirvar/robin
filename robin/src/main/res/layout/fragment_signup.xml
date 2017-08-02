@@ -120,10 +120,10 @@
             android:background="@drawable/button"
             android:text="@string/sign_up"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/signup"
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/submit"

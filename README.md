@@ -1,7 +1,9 @@
-# robin
+![logo](/assets/logo.png?raw=true)
 ## Login made simple.
 
 Almost every app has a login and signup, so why do we re-write code everytime? Let robin handle that for you.
+
+![login](/assets/login.png?raw=true) ![signup](/assets/signup.png?raw=true)
 
 # Usage
 Add this to your **build.gradle**

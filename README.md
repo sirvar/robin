@@ -1,5 +1,5 @@
 ![logo](/assets/logo.png?raw=true)
-## Login made simple.
+## 🚀 Android login, made simple Edit
 
 Almost every app has a login and signup, so why do we re-write code everytime? Let robin handle that for you.
 

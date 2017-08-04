@@ -1,5 +1,5 @@
 ![logo](/assets/logo.png?raw=true)
-## Login made simple.
+## 🚀 Android login, made simple
 
 Almost every app has a login and signup, so why do we re-write code everytime? Let robin handle that for you.
 
@@ -38,7 +38,9 @@ public class MainActivity extends RobinActivity {
 | Theme Name | Usage |
 | ---------- | -----:|
 | Light |  Theme.LIGHT |
-| Dark | Theme.DARK |
-| Flat | Theme.FLAT |
-| Gradient | Theme.GRADIENT |
-| Blur | Theme.BLUR |
+| Dark | Theme.DARK &#42; |
+| Flat | Theme.FLAT &#42; |
+| Gradient | Theme.GRADIENT &#42; |
+| Blur | Theme.BLUR &#42; |
+
+&#42; Coming soon

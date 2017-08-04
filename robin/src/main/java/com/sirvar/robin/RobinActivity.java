@@ -183,6 +183,7 @@ public abstract class RobinActivity extends AppCompatActivity {
         logoBitmap = bitmap;
         loginFragment.setImage(logoBitmap);
         signupFragment.setImage(logoBitmap);
+        forgotPasswordFragment.setImage(logoBitmap);
     }
 
     /**
@@ -194,6 +195,7 @@ public abstract class RobinActivity extends AppCompatActivity {
         this.typeface = typeface;
         loginFragment.setFont(typeface);
         signupFragment.setFont(typeface);
+        forgotPasswordFragment.setFont(typeface);
     }
 
     /**

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignupFragment extends Fragment {
 
@@ -62,6 +63,17 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((RobinActivity) getActivity()).startLoginFragment();
+            }
+        });
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fieldsFilled()) {
+                    ((RobinActivity) getActivity()).onSignup(name.getText().toString(), email.getText().toString(), password.getText().toString());
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(), "Some information is missing.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -133,11 +145,16 @@ public class SignupFragment extends Fragment {
         name.setTypeface(typeface);
         email.setTypeface(typeface);
         password.setTypeface(typeface);
+        confirmPassword.setTypeface(typeface);
         nameWrapper.setTypeface(typeface);
         emailWrapper.setTypeface(typeface);
         passwordWrapper.setTypeface(typeface);
         confirmPasswordWrapper.setTypeface(typeface);
         submit.setTypeface(typeface);
+    }
+
+    private boolean fieldsFilled() {
+        return (!(name.getText().toString().isEmpty() || email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) && (password.getText().toString().equals(confirmPassword.getText().toString())));
     }
 
     private void setDefaults() {

@@ -19,23 +19,23 @@ public class MainActivity extends RobinActivity {
         setFont(Typeface.createFromAsset(getAssets(), "Montserrat-Medium.ttf"));
         setTheme(Theme.LIGHT);
         enableSocialLogin();
-        showSignupFirst();
-
+        showLoginFirst();
     }
 
     @Override
     protected void onLogin(String email, String password) {
-        // Make request to API
+        Toast.makeText(getApplicationContext(), "Login", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onSignup(String name, String email, String password) {
-
+        Toast.makeText(getApplicationContext(), "Signup", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onForgotPassword(String email) {
         Toast.makeText(getApplicationContext(), "Forgot Password", Toast.LENGTH_SHORT).show();
+        //
     }
 
     @Override

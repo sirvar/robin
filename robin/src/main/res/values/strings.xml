@@ -12,4 +12,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="signin_link">Already have an account? Sign in</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="remember_password">Remember your password? Login</string>
 </resources>

@@ -31,12 +31,15 @@ public class MainActivity extends RobinActivity {
     @Override
     protected void onSignup(String name, String email, String password) {
         Toast.makeText(getApplicationContext(), "Signup", Toast.LENGTH_SHORT).show();
+        // Make API call
     }
 
     @Override
     protected void onForgotPassword(String email) {
         Toast.makeText(getApplicationContext(), "Forgot Password", Toast.LENGTH_SHORT).show();
-        //
+        // Make API call
+        // After sent password email callback
+        startLoginFragment();
     }
 
     @Override

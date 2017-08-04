@@ -38,10 +38,6 @@ public abstract class RobinActivity extends AppCompatActivity {
         signupFragment = new SignupFragment();
         forgotPasswordFragment = new ForgotPasswordFragment();
 
-        if (findViewById(R.id.fragment_container) != null) {
-            startLoginFragment();
-        }
-
         setDefaults();
     }
 
@@ -78,14 +74,39 @@ public abstract class RobinActivity extends AppCompatActivity {
      */
     protected abstract void onFacebookLogin();
 
-    public void enableSocialLogin() {
+    /**
+     * Enables social login button
+     */
+    protected void enableSocialLogin() {
         socialLogin = true;
+        loginFragment.showSocialLogin(socialLogin);
     }
 
-    public void disableSocialLogin() {
+    /**
+     * Hides social login buttons
+     */
+    protected void disableSocialLogin() {
         socialLogin = false;
+        loginFragment.showSocialLogin(socialLogin);
     }
 
+    protected void showLoginFirst() {
+        loginFirst = true;
+        if (findViewById(R.id.fragment_container) != null) {
+            startLoginFragment();
+        }
+    }
+
+    protected void showSignupFirst() {
+        loginFirst = false;
+        if (findViewById(R.id.fragment_container) != null) {
+            startSignupFragment();
+        }
+    }
+
+    /**
+     * Launches login fragment
+     */
     protected void startLoginFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
@@ -93,6 +114,9 @@ public abstract class RobinActivity extends AppCompatActivity {
                 .commit();
     }
 
+    /**
+     * Launches forgot password fragment
+     */
     protected void startForgotPasswordFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
@@ -100,6 +124,9 @@ public abstract class RobinActivity extends AppCompatActivity {
                 .commit();
     }
 
+    /**
+     * Launches signup fragment
+     */
     protected void startSignupFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
@@ -130,7 +157,7 @@ public abstract class RobinActivity extends AppCompatActivity {
     /**
      * Set theme for activity
      *
-     * @param theme Light or Dark theme
+     * @param theme from list of themes in enum
      */
     protected void setTheme(Theme theme) {
         this.theme = theme;
@@ -173,6 +200,7 @@ public abstract class RobinActivity extends AppCompatActivity {
      * Set default values
      */
     private void setDefaults() {
+        showLoginFirst();
         theme = Theme.LIGHT;
     }
 }

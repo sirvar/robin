@@ -32,6 +32,7 @@ public class LoginFragment extends Fragment {
 
     private ImageButton google;
     private ImageButton facebook;
+    private boolean showLogin;
 
     private Typeface typeface;
     private String titleText;
@@ -99,6 +100,11 @@ public class LoginFragment extends Fragment {
                 ((RobinActivity) getActivity()).startSignupFragment();
             }
         });
+
+        if (!showLogin) {
+            google.setVisibility(View.INVISIBLE);
+            facebook.setVisibility(View.INVISIBLE);
+        }
 
         setDefaults();
 
@@ -171,6 +177,10 @@ public class LoginFragment extends Fragment {
         emailWrapper.setTypeface(typeface);
         passwordWrapper.setTypeface(typeface);
         submit.setTypeface(typeface);
+    }
+
+    protected void showSocialLogin(boolean showLogin) {
+        this.showLogin = showLogin;
     }
 
     private boolean fieldsFilled() {

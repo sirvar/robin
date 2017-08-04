@@ -19,6 +19,8 @@ public class MainActivity extends RobinActivity {
         setFont(Typeface.createFromAsset(getAssets(), "Montserrat-Medium.ttf"));
         setTheme(Theme.LIGHT);
         enableSocialLogin();
+        showSignupFirst();
+
     }
 
     @Override

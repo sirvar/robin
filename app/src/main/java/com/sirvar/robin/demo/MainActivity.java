@@ -15,6 +15,7 @@ public class MainActivity extends RobinActivity {
 
         setLoginTitle("Sign in to Robin");
         setSignupTitle("Welcome to Robin");
+        setForgotPasswordTitle("Forgot Password");
         setImage(getResources().getDrawable(R.drawable.logo));
         setFont(Typeface.createFromAsset(getAssets(), "Montserrat-Medium.ttf"));
         setTheme(Theme.LIGHT);

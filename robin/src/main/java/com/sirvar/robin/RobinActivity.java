@@ -17,6 +17,7 @@ public abstract class RobinActivity extends AppCompatActivity {
 
     private String loginTitle;
     private String signupTitle;
+    private String forgotPasswordTitle;
     private Drawable logoDrawable;
     private Bitmap logoBitmap;
     private Typeface typeface;
@@ -145,13 +146,23 @@ public abstract class RobinActivity extends AppCompatActivity {
     }
 
     /**
-     * Set title for login fragment
+     * Set title for signup fragment
      *
      * @param title login title
      */
     protected void setSignupTitle(String title) {
         signupTitle = title;
         signupFragment.setTitle(signupTitle);
+    }
+
+    /**
+     * Set title for forgot password fragment
+     *
+     * @param title login title
+     */
+    protected void setForgotPasswordTitle(String title) {
+        forgotPasswordTitle = title;
+        forgotPasswordFragment.setTitle(forgotPasswordTitle);
     }
 
     /**
@@ -172,6 +183,7 @@ public abstract class RobinActivity extends AppCompatActivity {
         logoDrawable = drawable;
         loginFragment.setImage(logoDrawable);
         signupFragment.setImage(logoDrawable);
+        forgotPasswordFragment.setImage(logoDrawable);
     }
 
     /**

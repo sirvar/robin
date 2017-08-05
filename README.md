@@ -8,6 +8,10 @@ Almost every app has a login and signup, so why do we re-write code everytime? L
 # Usage
 Add this to your **build.gradle**
 
+```
+compile 'com.sirvar:robin:0.0.1'
+```
+
 Create a new activity to handle login and signup requests that extends **RobinActivity**
 ```java
 public class MainActivity extends RobinActivity {

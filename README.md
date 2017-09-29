@@ -9,7 +9,7 @@ Almost every app has a login and signup, so why do we re-write code everytime? L
 # Usage
 Add this to your **build.gradle**
 
-```
+```groovy
 compile 'com.sirvar:robin:0.0.1'
 ```
 

@@ -1,6 +1,6 @@
 ![logo](https://raw.githubusercontent.com/sirvar/robin/master/assets/logo.png)
 ## 🚀 Android login, made simple
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-robin-blue.svg?style=flat)](https://android-arsenal.com/details/1/6255)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-robin-blue.svg?style=flat)](https://android-arsenal.com/details/1/6255) [ ![Download](https://api.bintray.com/packages/sirvar/maven/Robin/images/download.svg) ](https://bintray.com/sirvar/maven/Robin/_latestVersion)
 
 Almost every app has a login and signup, so why do we re-write code everytime? Let robin handle that for you.
 

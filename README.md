@@ -1,6 +1,11 @@
-![logo](https://raw.githubusercontent.com/sirvar/robin/master/assets/logo.png)
-## 🚀 Android login, made simple
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-robin-blue.svg?style=flat)](https://android-arsenal.com/details/1/6255) [ ![Download](https://api.bintray.com/packages/sirvar/maven/Robin/images/download.svg) ](https://bintray.com/sirvar/maven/Robin/_latestVersion)
+<p align="center"><a href="https://vuejs.org" target="_blank"><img width="200"src="https://raw.githubusercontent.com/sirvar/robin/master/assets/logo.png"></a></p>
+
+<h2 align="center">🚀 Android login, made simple</h2>
+
+<p align="center">
+  <a href="https://android-arsenal.com/details/1/6255"><img src="https://img.shields.io/badge/Android%20Arsenal-robin-blue.svg?style=flat" alt="Build Status"></a>
+  <a href="https://bintray.com/sirvar/maven/Robin/_latestVersion"><img src="https://api.bintray.com/packages/sirvar/maven/Robin/images/download.svg" alt="Coverage Status"></a>
+</p>
 
 Almost every app has a login and signup, so why do we re-write code everytime? Let robin handle that for you.
 

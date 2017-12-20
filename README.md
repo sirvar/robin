@@ -1,4 +1,4 @@
-<p align="center"><a href="https://vuejs.org" target="_blank"><img width="200"src="https://raw.githubusercontent.com/sirvar/robin/master/assets/logo.png"></a></p>
+<p align="center"><img width="200"src="https://raw.githubusercontent.com/sirvar/robin/master/assets/logo.png"></p>
 
 <h2 align="center">🚀 Android login, made simple</h2>
 

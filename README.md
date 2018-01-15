@@ -90,3 +90,6 @@ onGoogleLogin()
 ```java
 onFacebookLogin()
 ```
+
+## Contributing
+Want to design a new theme for robin? Follow the same format as previously done and make a PR! Also update the README adding the new theme and give yourself credit right next to it!

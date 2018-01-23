@@ -42,26 +42,16 @@ public class ForgotPasswordFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_forgot_password, container, false);
 
         // Initialize views
-        title = (TextView) view.findViewById(R.id.title);
-        login = (TextView) view.findViewById(R.id.login);
-        logo = (ImageView) view.findViewById(R.id.logo);
-        email = (EditText) view.findViewById(R.id.email);
-        emailWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_email);
-        submit = (Button) view.findViewById(R.id.submit);
+        title = view.findViewById(R.id.title);
+        login = view.findViewById(R.id.login);
+        logo = view.findViewById(R.id.logo);
+        email = view.findViewById(R.id.email);
+        emailWrapper = view.findViewById(R.id.wrapper_email);
+        submit = view.findViewById(R.id.submit);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((RobinActivity) getActivity()).onForgotPassword(email.getText().toString());
-            }
-        });
+        submit.setOnClickListener(v -> ((RobinActivity) getActivity()).onForgotPassword(email.getText().toString()));
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((RobinActivity) getActivity()).startLoginFragment();
-            }
-        });
+        login.setOnClickListener(v -> ((RobinActivity) getActivity()).startLoginFragment());
 
         setDefaults();
 

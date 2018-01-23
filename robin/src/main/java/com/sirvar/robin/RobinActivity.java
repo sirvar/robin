@@ -3,11 +3,9 @@ package com.sirvar.robin;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 public abstract class RobinActivity extends AppCompatActivity {
 
@@ -48,7 +46,9 @@ public abstract class RobinActivity extends AppCompatActivity {
      * @param email    username or email address entered by user
      * @param password raw password
      */
-    protected abstract void onLogin(String email, String password);
+   public void onLogin(String email, @Nullable String password){
+
+   }
 
     /**
      * Override form signup
@@ -56,24 +56,55 @@ public abstract class RobinActivity extends AppCompatActivity {
      * @param email    username or email address entered by user
      * @param password raw password
      */
-    protected abstract void onSignup(String name, String email, String password);
+    public void onSignup(String name, @Nullable String email,@Nullable String password){
+
+    }
 
     /**
      * Override form forgot password
      *
      * @param email    username or email address entered by user
      */
-    protected abstract void onForgotPassword(String email);
+    public void onForgotPassword(String email){
+
+    }
 
     /**
      * Override form Google login
      */
-    protected abstract void onGoogleLogin();
+    public void onGoogleLogin(){
+
+    }
 
     /**
      * Override form Facebook login
      */
-    protected abstract void onFacebookLogin();
+    public void onFacebookLogin(){
+
+    }
+
+
+    /**
+     * This method will be called when the fragment is ready(onCreateView has been called) and you
+     * can modify it's fields and components
+     * @param signupFragment
+     */
+    public void onSignupFragmentCreated(SignupFragment signupFragment)
+    {
+
+    }
+
+
+
+    /**
+     * This method will be called when the fragment is ready(onCreateView has been called) and you
+     * can modify it's fields and components
+     * @param loginFragment
+     */
+    public void onLoginFragmentCreated(LoginFragment loginFragment)
+    {
+
+    }
 
     /**
      * Enables social login button
@@ -217,4 +248,5 @@ public abstract class RobinActivity extends AppCompatActivity {
         showLoginFirst();
         theme = Theme.LIGHT;
     }
+
 }

@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,12 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class LoginFragment extends Fragment {
+
+    private RelativeLayout layout;
 
     private TextView title;
     private TextView signup;
@@ -49,57 +56,40 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         // Initialize views
-        title = (TextView) view.findViewById(R.id.title);
-        signup = (TextView) view.findViewById(R.id.signup);
-        forgotPassword = (TextView) view.findViewById(R.id.forgotPassword);
-        logo = (ImageView) view.findViewById(R.id.logo);
-        email = (EditText) view.findViewById(R.id.email);
-        password = (EditText) view.findViewById(R.id.password);
-        emailWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_email);
-        passwordWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_password);
-        submit = (Button) view.findViewById(R.id.submit);
-        google = (ImageButton) view.findViewById(R.id.google_login);
-        facebook = (ImageButton) view.findViewById(R.id.facebook_login);
+        title = view.findViewById(R.id.title);
+        signup = view.findViewById(R.id.signup);
+        forgotPassword = view.findViewById(R.id.forgotPassword);
+        logo = view.findViewById(R.id.logo);
+        email = view.findViewById(R.id.email);
+        password = view.findViewById(R.id.password);
+        emailWrapper = view.findViewById(R.id.wrapper_email);
+        passwordWrapper = view.findViewById(R.id.wrapper_password);
+        submit = view.findViewById(R.id.submit);
+        google = view.findViewById(R.id.google_login);
+        facebook = view.findViewById(R.id.facebook_login);
+        layout=view.findViewById(R.id.login_layout);
+
+
+        ((RobinActivity) getActivity()).onLoginFragmentCreated(this);
+
+
 
         // Login form submitted
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fieldsFilled()) {
-                    ((RobinActivity) getActivity()).onLogin(email.getText().toString(), password.getText().toString());
-                } else {
-                    Toast.makeText(getContext(), "Some information is missing.", Toast.LENGTH_SHORT).show();
-                }
+        submit.setOnClickListener(v -> {
+            if (fieldsFilled()) {
+                ((RobinActivity) getActivity()).onLogin(email.getText().toString(), password.getText().toString());
+            } else {
+                Toast.makeText(getContext(), "Some information is missing.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((RobinActivity) getActivity()).onGoogleLogin();
-            }
-        });
+        google.setOnClickListener(v -> ((RobinActivity) getActivity()).onGoogleLogin());
 
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((RobinActivity) getActivity()).onFacebookLogin();
-            }
-        });
+        facebook.setOnClickListener(v -> ((RobinActivity) getActivity()).onFacebookLogin());
 
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((RobinActivity) getActivity()).startForgotPasswordFragment();
-            }
-        });
+        forgotPassword.setOnClickListener(v -> ((RobinActivity) getActivity()).startForgotPasswordFragment());
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((RobinActivity) getActivity()).startSignupFragment();
-            }
-        });
+        signup.setOnClickListener(v -> ((RobinActivity) getActivity()).startSignupFragment());
 
         if (!showLogin) {
             google.setVisibility(View.INVISIBLE);
@@ -184,8 +174,49 @@ public class LoginFragment extends Fragment {
     }
 
     private boolean fieldsFilled() {
-        return !(email.getText().toString().isEmpty() || password.getText().toString().isEmpty());
+
+
+        for( int i = 0; i < layout.getChildCount(); i++ ) {
+
+            if (layout.getChildAt(i) instanceof TextInputLayout)
+            {
+                TextInputLayout input= (TextInputLayout) layout.getChildAt(i);
+
+                if (!isFieldFilled(input.getEditText()))
+                {
+                    return false;
+                }
+
+            }
+            else if (layout.getChildAt(i) instanceof FrameLayout)
+            {
+                FrameLayout input= (FrameLayout) layout.getChildAt(i);
+
+               //ugly hack to get to the password
+                TextInputLayout child = (TextInputLayout) input.getChildAt(0);
+                if (!isFieldFilled(child.getEditText()))
+                {
+                    return false;
+                }
+
+            }
+        }
+        return true;
+
     }
+
+    /**
+     *
+     * @param edit
+     * @return true if a field is {@link android.view.View#VISIBLE} and filled out or if it's
+     * not visible
+     */
+    private boolean isFieldFilled(EditText edit) {
+
+        return edit.getVisibility() != View.VISIBLE || (edit.getText().toString() != null && !edit.getText().toString().trim().isEmpty());
+    }
+
+
 
     private void setDefaults() {
         setTitle();
@@ -193,4 +224,65 @@ public class LoginFragment extends Fragment {
         setImage();
     }
 
+
+    /**
+     *
+     * @param visibility .- The {@link android.view.View} Visibility for this field
+     * @param hint .- The hint for this Field. Will use default if null
+     */
+    public void setEmailField(int visibility, @Nullable String hint)
+    {
+        email.setVisibility(visibility);
+        if (hint!=null)
+        {
+            emailWrapper.setHint(hint);
+            email.setHint(hint);
+        }
+    }
+
+
+    /**
+     *
+     * @param visibility .- The {@link android.view.View} Visibility for this field
+     * @param hint .- The hint for this Field. Will use default if null
+     */
+    public void setForgotPassword(int visibility, @Nullable String hint)
+    {
+        forgotPassword.setVisibility(visibility);
+        if (hint!=null)
+        {
+            forgotPassword.setHint(hint);
+            forgotPassword.setText(hint);
+        }
+    }
+
+    /**
+     *
+     * @param visibility .- The {@link android.view.View} Visibility for this field
+     * @param hint .- The hint for this Field. Will use default if null
+     */
+    public void setPasswordField(int visibility, @Nullable String hint)
+    {
+        password.setVisibility(visibility);
+        forgotPassword.setVisibility(visibility);
+
+        if (hint!=null)
+        {
+            passwordWrapper.setHint(hint);
+            password.setHint(hint);
+        }
+    }
+
+
+    public EditText getEmail() {
+        return email;
+    }
+
+    public EditText getPassword() {
+        return password;
+    }
+
+    public TextView getForgotPassword() {
+        return forgotPassword;
+    }
 }

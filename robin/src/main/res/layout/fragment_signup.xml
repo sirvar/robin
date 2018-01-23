@@ -6,6 +6,7 @@
     tools:context="com.sirvar.robin.SignupFragment">
 
     <RelativeLayout
+        android:id="@+id/signup_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"

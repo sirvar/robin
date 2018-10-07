@@ -45,17 +45,6 @@ public class MainActivity extends RobinActivity {
 }
 ```
 
-## Themes
-| Theme Name | Usage |
-| ---------- | -----:|
-| Light |  Theme.LIGHT |
-| Dark | Theme.DARK &#42; |
-| Flat | Theme.FLAT &#42; |
-| Gradient | Theme.GRADIENT &#42; |
-| Blur | Theme.BLUR &#42; |
-
-&#42; Coming soon
-
 ## Configuration Options
 | Method | Description |
 | ------ | -----------:|

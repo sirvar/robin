@@ -1,11 +1,11 @@
 <p align="center"><img width="200"src="https://raw.githubusercontent.com/sirvar/robin/master/assets/logo.png"></p>
 
 <h2 align="center">🚀 Android login, made simple</h2>
-
 <p align="center">
   <a href="https://android-arsenal.com/details/1/6255"><img src="https://img.shields.io/badge/Android%20Arsenal-robin-blue.svg?style=flat" alt="Build Status"></a>
   <a href="https://bintray.com/sirvar/maven/Robin/_latestVersion"><img src="https://api.bintray.com/packages/sirvar/maven/Robin/images/download.svg" alt="Coverage Status"></a>
 </p>
+<b>This repo is not being actively maintained.</b>
 
 Almost every app has a login and signup, so why do we re-write code everytime? Let robin handle that for you.
 

@@ -12,10 +12,22 @@ Almost every app has a login and signup, so why do we re-write code everytime? L
 ![login](https://raw.githubusercontent.com/sirvar/robin/master/assets/login.png) ![signup](https://raw.githubusercontent.com/sirvar/robin/master/assets/signup.png)
 
 # Usage
-Add this to your **build.gradle**
+Add it in your root build.gradle at the end of repositories:
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Add the dependency
 
 ```groovy
-compile 'com.sirvar:robin:0.0.1'
+	dependencies {
+	        compile 'com.github.dustedrob:robin:-SNAPSHOT'
+	}
+
 ```
 
 Create a new activity to handle login and signup requests that extends **RobinActivity**

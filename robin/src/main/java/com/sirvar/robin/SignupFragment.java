@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,11 +14,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class SignupFragment extends Fragment {
 
+    private RelativeLayout layout;
     private TextView title;
     private TextView login;
     private ImageView logo;
@@ -46,34 +51,32 @@ public class SignupFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
         // Initialize views
-        title = (TextView) view.findViewById(R.id.title);
-        login = (TextView) view.findViewById(R.id.login);
-        logo = (ImageView) view.findViewById(R.id.logo);
-        name = (EditText) view.findViewById(R.id.name);
-        email = (EditText) view.findViewById(R.id.email);
-        password = (EditText) view.findViewById(R.id.password);
-        confirmPassword = (EditText) view.findViewById(R.id.confirm_password);
-        nameWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_name);
-        emailWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_email);
-        passwordWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_password);
-        confirmPasswordWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_confirm_password);
-        submit = (Button) view.findViewById(R.id.submit);
+        title = view.findViewById(R.id.title);
+        login = view.findViewById(R.id.login);
+        logo = view.findViewById(R.id.logo);
+        name = view.findViewById(R.id.name);
+        email = view.findViewById(R.id.email);
+        password = view.findViewById(R.id.password);
+        confirmPassword = view.findViewById(R.id.confirm_password);
+        nameWrapper = view.findViewById(R.id.wrapper_name);
+        emailWrapper = view.findViewById(R.id.wrapper_email);
+        passwordWrapper = view.findViewById(R.id.wrapper_password);
+        confirmPasswordWrapper = view.findViewById(R.id.wrapper_confirm_password);
+        submit = view.findViewById(R.id.submit);
+        layout=view.findViewById(R.id.signup_layout);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((RobinActivity) getActivity()).startLoginFragment();
-            }
-        });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fieldsFilled()) {
-                    ((RobinActivity) getActivity()).onSignup(name.getText().toString(), email.getText().toString(), password.getText().toString());
-                } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Some information is missing.", Toast.LENGTH_SHORT).show();
-                }
+
+        ((RobinActivity) getActivity()).onSignupFragmentCreated(this);
+
+        login.setOnClickListener(v -> ((RobinActivity) getActivity()).startLoginFragment());
+
+        submit.setOnClickListener(v -> {
+            if (fieldsFilled() && passwordsMatch(password,confirmPassword)) {
+
+                ((RobinActivity) getActivity()).onSignup(name.getText().toString(), email.getText().toString(), password.getText().toString());
+            } else {
+                Toast.makeText(getActivity().getApplicationContext(), "Signup Failed.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -153,8 +156,42 @@ public class SignupFragment extends Fragment {
         submit.setTypeface(typeface);
     }
 
+
+    /**
+     *
+     * @param edit
+     * @return true if a field is {@link android.view.View#VISIBLE} and filled out or if it's
+     * not visible
+     */
+    private boolean isFieldFilled(EditText edit) {
+
+        return edit.getVisibility() != View.VISIBLE || (edit.getText().toString() != null && !edit.getText().toString().trim().isEmpty());
+    }
+
+
     private boolean fieldsFilled() {
-        return (!(name.getText().toString().isEmpty() || email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) && (password.getText().toString().equals(confirmPassword.getText().toString())));
+
+
+        for( int i = 0; i < layout.getChildCount(); i++ ) {
+
+            if (layout.getChildAt(i) instanceof TextInputLayout)
+            {
+                TextInputLayout input= (TextInputLayout) layout.getChildAt(i);
+
+                if (!isFieldFilled(input.getEditText()))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+
+    }
+
+    private boolean passwordsMatch(EditText password, EditText confirmPassword) {
+
+        return password.getVisibility() != View.VISIBLE || password.getText().toString().equals(confirmPassword.getText().toString());
+
     }
 
     private void setDefaults() {
@@ -162,4 +199,57 @@ public class SignupFragment extends Fragment {
         setFont();
         setImage();
     }
+
+    /**
+     *
+     * @param visibility .- The {@link android.view.View} Visibility for this field
+     * @param hint .- The hint for this Field. Will use default if null
+     */
+    public void setEmailField(int visibility, @Nullable String hint)
+    {
+        email.setVisibility(visibility);
+        if (hint!=null)
+        {
+            emailWrapper.setHint(hint);
+            email.setHint(hint);
+        }
+    }
+
+    /**
+     *
+     * @param visibility .- The {@link android.view.View} Visibility for this field
+     * @param hint .- The hint for this Field. Will use default if null
+     */
+    public void setNameField(int visibility, @Nullable String hint)
+    {
+        name.setVisibility(visibility);
+
+        if (hint!=null)
+        {
+            nameWrapper.setHint(hint);
+            name.setHint(hint);
+        }
+    }
+
+
+    /**
+     *
+     * @param visibility .- The {@link android.view.View} Visibility for this field
+     * @param hint .- The hint for this Field. Will use default if null
+     */
+    public void setPasswordField(int visibility, @Nullable String hint)
+    {
+        password.setVisibility(visibility);
+        confirmPassword.setVisibility(visibility);
+
+
+        if (hint!=null)
+        {
+            passwordWrapper.setHint(hint);
+            password.setHint(hint);
+        }
+    }
+
+
+
 }
